@@ -15,7 +15,7 @@ export const mainApp = (app: Application) => {
             return res.status(200).json({
                 message: "OK response from server",
             })
-        } catch (error) {
+        } catch (error: any) {
             return res.status(404).json({
                 message: "error occured while loading default response",
                 data: error

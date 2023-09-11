@@ -1,7 +1,10 @@
 import express, { Application } from "express"
+import { mainApp } from "./mainApp";
 
 const port: number = 6000;
 const app: Application = express();
+
+mainApp(app)
 
 const server = app.listen(port, () => {
     console.log()
@@ -15,5 +18,7 @@ process.on("uncaughtException", (error: Error) => {
 
 process.on("unhandledRejection", (reason: any) => {
     console.log("unhandledRejection: ", reason)
-    process.exit(1)
+    server.close(()=>{
+        process.exit(1)
+    })
 })
