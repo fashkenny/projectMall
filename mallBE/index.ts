@@ -1,7 +1,9 @@
 import express, { Application } from "express"
 import { mainApp } from "./mainApp";
+import env from "dotenv"
+env.config()
 
-const port: number = 6000;
+const port: number = parseInt(process.env.PORT!);
 const app: Application = express();
 
 mainApp(app)
